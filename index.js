@@ -7,7 +7,7 @@ module.exports = plugin(
         '--fluid-min-width': theme('fluid.minWidth', '375'),
         '--fluid-max-width': theme('fluid.maxWidth', '1440'),
         '--fluid-screen': 'calc(var(--fluid-min-width) * 1px)',
-        '--fluid-bp': 'calc((var(--fluid-screen) - var(--fluid-min-width) / 16 * 1rem) / (var(--fluid-max-width) - var(--fluid-min-width)))',
+        '--fluid-bp': '(var(--fluid-screen) - var(--fluid-min-width) / 16 * 1rem) / (var(--fluid-max-width) - var(--fluid-min-width))',
         [`@media (min-width: ${theme('fluid.minWidth', '1440')}px)`]: {
           '--fluid-screen': '100vw',
         },
