@@ -6,10 +6,13 @@ module.exports = plugin(
       ':root': {
         '--fluid-min-width': theme('fluid.minWidth', '375'),
         '--fluid-max-width': theme('fluid.maxWidth', '1440'),
-        '--fluid-screen': '100vw',
-        '--fluid-bp': `calc((var(--fluid-screen) - var(--fluid-min-width) / 16 * 1rem) / (var(--fluid-max-width) - var(--fluid-min-width)))`,
+        '--fluid-screen': 'calc(var(--fluid-min-width) * 1px)',
+        '--fluid-bp': 'calc((var(--fluid-screen) - var(--fluid-min-width) / 16 * 1rem) / (var(--fluid-max-width) - var(--fluid-min-width)))',
+        [`@media (min-width: ${theme('fluid.minWidth', '1440')}px)`]: {
+          '--fluid-screen': '100vw',
+        },
         [`@media (min-width: ${theme('fluid.maxWidth', '1440')}px)`]: {
-          '--fluid-screen': `calc(var(--fluid-max-width) * 1px)`,
+          '--fluid-screen': 'calc(var(--fluid-max-width) * 1px)',
         },
       },
     });
@@ -22,7 +25,7 @@ module.exports = plugin(
 
         return {
           '--fluid-min-font-size': modifier,
-          'font-size': `calc(((var(--fluid-min-font-size) / 16) * 1rem) + (var(--fluid-max-font-size) - var(--fluid-min-font-size)) * var(--fluid-bp))`,
+          'font-size': 'calc(((var(--fluid-min-font-size) / 16) * 1rem) + (var(--fluid-max-font-size) - var(--fluid-min-font-size)) * var(--fluid-bp))',
         };
       },
       'fluid-max': modifier => {
